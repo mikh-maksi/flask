@@ -1,0 +1,22 @@
+[
+    {
+        "id": 0,
+        "name": "noname",
+        "description": "no description"
+    },
+    {
+        "id": 1,
+        "name": "Не призначено",
+        "description": "1"
+    },
+    {
+        "id": 2,
+        "name": "Не призначено",
+        "description": "1"
+    },
+    {
+        "id": 3,
+        "name": "Не призначено",
+        "description": "1"
+    }
+]
