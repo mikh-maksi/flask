@@ -11,7 +11,7 @@
     <button id = "btn">btn</button>
     <script>
         function answers(){
-    query = ' http://127.0.0.1:5000/save';
+    query = '/save';
     console.log(query);
     fetch(query).then(response => response.json())
     .then(function (quiz) {
