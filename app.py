@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 import json
 
 app = Flask(__name__)
@@ -31,3 +31,9 @@ def check():
     json_file = json.load(f)
     json_data = json.dumps(json_file, indent=4, ensure_ascii=False)
     return json_data
+
+@app.route("/tmpl")
+def tmpl_out():
+    return_message = "Send fetch"
+    # return return_message
+    return render_template('tmpl.html',text = return_message)
