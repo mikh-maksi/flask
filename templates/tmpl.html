@@ -9,6 +9,7 @@
 <body>
     <h1>{{text}}</h1>
     <button id = "btn">btn</button>
+    <div id="result"></div>
     <script>
         function answers(){
     query = '/save';
@@ -25,13 +26,20 @@
       
     //   n_right_answer = quiz.n_right_answer_arr[0];
     //   n_question.value = quiz.total_n;
-      console.log(quiz);
+      console.log(quiz.length);
+      console.log(quiz[0]);
+      for (let i=0;i<quiz.length;i++){
+        console.log(quiz[i]);
+        let el = document.createElement("div");
+        el.innerHTML = quiz[i].id;
+        result.appendChild(el);
+      }
         
     });
   }
 
 btn.addEventListener("click",answers);
     </script>
-    <script src = "{{ url_for('static', filename='js/js.js') }}"></script>
+    <!-- <script src = "{{ url_for('static', filename='js/js.js') }}"></script> -->
 </body>
 </html>
