@@ -123,27 +123,15 @@ def send_question():
 
 # https://flask-start-app.herokuapp.com/send_question?title=title&a1=a1&a2=a2&a3=a3&a4=a4&answer_name=answer_name&answer_n=answer_n&date_time=2022-11-07
 
-@app.route("/get_answer_test")
-def get_answer_test():
-    title = "Title"
-    a1 = 'a1'
-    a2 = 'a2'
-    a3 = 'a3'
-    a4 = 'a4'
-    answer_name = 'answer_name'
-    answer_n = 1
-    date_time = '2022-11-07'
-    answer = Answers( title=title , a1=a1,
-                a2=a2, a3=a3, a4=a4,answer_name=answer_name, answer_n=answer_n, date_time=date_time)
-    print(answer)
-    session.add(answer)
+@app.route("/get_question/<int:id>")
+def get_answer_test(id: int):
     session.commit()
-    test = session.query(Answers).filter_by(title=title).first()
+    test = session.query(Answers).filter_by(id=id).first()
     print(test)
-    # data = AnswersSchema.dump(test)
-    # print(data)
+    data = answers_schema.dump(test)
+    print(data)
 
-    return "Some answer"
+    return jsonify(data=data), 202
 
 @app.route("/save")
 def save():
