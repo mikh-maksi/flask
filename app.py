@@ -1,10 +1,15 @@
 from flask import Flask, render_template
 import json
+from numbers import Real
+from flask_sqlalchemy import SQLAlchemy
+from flask_cors import CORS
+from celery import Celery
 from flask_marshmallow import Marshmallow
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import *
+from flask import request, jsonify
 
 db = create_engine('postgresql+psycopg2://jjjvxftvljouqa:a41a7e3069600c2daa7ed7e917e26216fbd28f517719f517c4529b994bb8e430@ec2-34-248-169-69.eu-west-1.compute.amazonaws.com:5432/dfmbp1l6kre1rn')
 # create the app
