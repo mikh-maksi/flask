@@ -84,8 +84,9 @@ def get_answer():
     session.add(answer)
     session.commit()
     test = session.query(Answers).filter_by(title=title).first()
-    data = AnswersSchema.dump(test)
-    print(data)
+    print(test)
+    # data = AnswersSchema.dump(test)
+    # print(data)
 
     return "Some answer"
 
