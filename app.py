@@ -68,12 +68,12 @@ def hello_world():
 
 
 @app.route("/send_question",methods=['GET'])
-def get_answer():
+def send_question():
     if request.method == "GET":
         if request.args.get('title') == None:
             title = ''
         else:
-            title = request.args.get('course')
+            title = request.args.get('title')
 
         if request.args.get('a1') == None:
             a1 = ''
@@ -121,7 +121,7 @@ def get_answer():
 
     return jsonify(data=data, message=f'Answer {answer.id} successful registered'), 202
 
-
+# https://flask-start-app.herokuapp.com/send_question?title=title&a1=a1&a2=a2&a3=a3&a4=a4&answer_name=answer_name&answer_n=answer_n&date_time=2022-11-07
 
 @app.route("/get_answer_test")
 def get_answer_test():
