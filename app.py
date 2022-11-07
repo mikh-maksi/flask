@@ -32,6 +32,11 @@ def db_create():
     base.metadata.create_all(db)
     print('Database created')
 
+
+@app.route("/db_create")
+def db_create_all():
+    db.create_all()
+
 ma = Marshmallow(app)
 
 
