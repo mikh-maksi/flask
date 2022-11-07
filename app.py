@@ -27,6 +27,9 @@ base = declarative_base()
 Session = sessionmaker(db)
 session = Session()
 
+
+ma = Marshmallow(app)
+
 @app.cli.command('db_create')
 def db_create():
     base.metadata.create_all(db)
@@ -37,7 +40,7 @@ def db_create():
 def db_create_all():
     base.metadata.create_all(db)
 
-ma = Marshmallow(app)
+
 
 
 class Answers(base):
@@ -77,13 +80,14 @@ def get_answer():
     date_time = '2022-11-07'
     answer = Answers( title=title , a1=a1,
                 a2=a2, a3=a3, a4=a4,answer_name=answer_name, answer_n=answer_n, date_time=date_time)
+    print(answer)
     session.add(answer)
     session.commit()
     test = session.query(Answers).filter_by(title=title).first()
     data = AnswersSchema.dump(test)
     print(data)
 
-    return jsonify(data=data, message=f'Report {answer.id} successfully registered'), 202
+    return "Some answer"
 
 @app.route("/save")
 def save():
