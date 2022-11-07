@@ -79,7 +79,7 @@ def get_answer():
                 a2=a2, a3=a3, a4=a4,answer_name=answer_name, answer_n=answer_n, date_time=date_time)
     session.add(answer)
     session.commit()
-    test = session.query(Answers).filter_by(id=1).first()
+    test = session.query(Answers).filter_by(title=title).first()
     data = AnswersSchema.dump(test)
     print(data)
 
