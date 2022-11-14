@@ -134,7 +134,7 @@ def actions_list():
         else:
             user = request.args.get('user')
 
-    actions_list = session.query(Actions).filter_by(user=user)
+    actions_list = session.query(Actions).filter_by(user=user).all()
     data = actions_schema.dump(actions_list)
     
     print(actions_list)
