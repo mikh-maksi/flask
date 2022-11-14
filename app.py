@@ -126,7 +126,20 @@ def actions():
     return str(d)
 
 
-@app.route("/act",methods=['GET'])
+@app.route("/actions_list",methods=['GET'])
+def actions_list():
+    if request.method == "GET":
+        if request.args.get('user') == None:
+            user = ''
+        else:
+            user = request.args.get('user')
+
+    actions_list = session.query(Actions).filter_by(user=user)
+    print(actions_list)
+  
+    return jsonify(data=actions_list), 201
+
+@app.route("/actions",methods=['GET'])
 def act():
     if request.method == "GET":
         if request.args.get('user') == None:
@@ -143,7 +156,6 @@ def act():
     session.add(action)
     session.commit()    
     return "<p>User</p>"
-
 
 
 @app.route("/send_question",methods=['GET'])
