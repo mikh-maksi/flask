@@ -64,6 +64,13 @@ class Actions(base):
     user = Column(String(100), nullable=False)
     date_time = Column(DateTime, nullable=False)
 
+class Action1(base):
+    __tablename__ = 'action1'
+    id = Column(Integer, primary_key=True)
+    user = Column(String(100), nullable=False)
+    type = Column(Integer, nullable=False)
+    date_time = Column(DateTime, nullable=False)
+
 class AnswersSchema(ma.Schema):
     class Meta:
         fields = ('id', 'title', 'a1', 'a2', 'a3', 'a4', 'answer_name', 'answer_n', 'date_time')
@@ -72,8 +79,13 @@ class ActionsSchema(ma.Schema):
     class Meta:
         fields = ('id', 'user', 'date_time')
 
+class Action1Schema(ma.Schema):
+    class Meta:
+        fields = ('id', 'user', 'type','date_time')
+
 answers_schema = AnswersSchema()
 actions_schema = ActionsSchema()
+action1_schema = Action1Schema()
 
 
 
@@ -90,6 +102,25 @@ def actions():
         else:
             user = request.args.get('user')
     action = Actions( user=user,date_time=datetime.fromtimestamp(time.time()))
+    print(action)
+    session.add(action)
+    session.commit()    
+    return "<p>User</p>"
+
+
+@app.route("/act",methods=['GET'])
+def actions():
+    if request.method == "GET":
+        if request.args.get('user') == None:
+            user = ''
+        else:
+            user = request.args.get('user')
+
+        if request.args.get('type') == None:
+            type = ''
+        else:
+            type = request.args.get('type')
+    action = Actions( user=user,type = type, date_time=datetime.fromtimestamp(time.time()))
     print(action)
     session.add(action)
     session.commit()    
