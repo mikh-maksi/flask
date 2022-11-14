@@ -35,12 +35,9 @@ def db_create():
     base.metadata.create_all(db)
     print('Database created')
 
-
 @app.route("/db_create")
 def db_create_all():
     base.metadata.create_all(db)
-
-
 
 
 class Answers(base):
@@ -55,11 +52,22 @@ class Answers(base):
     answer_n = Column(Integer, nullable=False)
     date_time = Column(DateTime, nullable=False)
 
+class Actions(base):
+    __tablename__ = 'actions'
+    id = Column(Integer, primary_key=True)
+    user = Column(String(100), nullable=False)
+    date_time = Column(DateTime, nullable=False)
+
 class AnswersSchema(ma.Schema):
     class Meta:
         fields = ('id', 'title', 'a1', 'a2', 'a3', 'a4', 'answer_name', 'answer_n', 'date_time')
 
+class ActionsSchema(ma.Schema):
+    class Meta:
+        fields = ('id', 'user', 'date_time')
+
 answers_schema = AnswersSchema()
+actions_schema = ActionsSchema()
 
 @app.route("/")
 def hello_world():
@@ -114,6 +122,8 @@ def send_question():
     print(answer)
     session.add(answer)
     session.commit()
+
+
     test = session.query(Answers).filter_by(title=title).first()
     print(test)
     data = answers_schema.dump(test)
