@@ -12,7 +12,7 @@ from sqlalchemy import *
 from flask import request, jsonify
 
 # db = create_engine('postgresql+psycopg2://jjjvxftvljouqa:a41a7e3069600c2daa7ed7e917e26216fbd28f517719f517c4529b994bb8e430@ec2-34-248-169-69.eu-west-1.compute.amazonaws.com:5432/dfmbp1l6kre1rn')
-db = create_engine('postgresql+psycopg2://bbdzicngvoxyyi:a23765af064d286de95fdc6ef6fb65ad88a629cc88983b6d660912551c593ec2@ec2-52-49-201-212.eu-west-1.compute.amazonaws.com:5432/d7mure0rdft93k')
+db = create_engine('postgresql+psycopg2://fuvnjouopjkqjz:457d26bac4530137e6f5fe1cf70d0b89ce4a9659c00fc076186ba123329495db@ec2-99-81-137-11.eu-west-1.compute.amazonaws.com:5432/dffjdini6butuh')
 # create the app
 app = Flask(__name__)
 
