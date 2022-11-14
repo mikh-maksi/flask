@@ -74,53 +74,28 @@ def hello_world():
     return "<p>Hello, World!</p>"
 
 
-
-@app.route("/send_question",methods=['GET'])
-def send_question():
+@app.route("/actions",methods=['GET'])
+def actions():
     if request.method == "GET":
         if request.args.get('title') == None:
             title = ''
         else:
             title = request.args.get('title')
+    return "<p>Hello, World!</p>"
 
-        if request.args.get('a1') == None:
-            a1 = ''
-        else:
-            a1 = request.args.get('a1')
 
-        if request.args.get('a2') == None:
-            a2 = ''
-        else:
-            a2 = request.args.get('a2')
 
-        if request.args.get('a3') == None:
-            a3 = ''
+@app.route("/send_question",methods=['GET'])
+def send_question():
+    if request.method == "GET":
+        if request.args.get('user') == None:
+            user = ''
         else:
-            a3 = request.args.get('a3')
+            user = request.args.get('user')
 
-        if request.args.get('a4') == None:
-            a4 = ''
-        else:
-            a4 = request.args.get('a4')
-        if request.args.get('answer_name') == None:
-            answer_name = ''
-        else:
-            answer_name = request.args.get('answer_name')
-
-        if request.args.get('answer_n') == None:
-            answer_n = ''
-        else:
-            answer_n = request.args.get('answer_n')
-
-        if request.args.get('date_time') == None:
-            date_time = '2022-01-01'
-        else:
-            date_time = request.args.get('date_time')
-
-    answer = Answers( title=title , a1=a1,
-                a2=a2, a3=a3, a4=a4,answer_name=answer_name, answer_n=answer_n, date_time=date_time)
-    print(answer)
-    session.add(answer)
+    action = Actions( user=user)
+    print(action)
+    session.add(action)
     session.commit()
 
 
