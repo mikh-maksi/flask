@@ -104,7 +104,7 @@ def actions():
             user = request.args.get('user')
     last_time = session.query(Actions).filter_by(user=user).order_by(Actions.id).all()
     out = last_time[len(last_time)-1].date_time
-    print(out)
+    print(str(out))
 
     action = Actions( user=user,date_time=datetime.fromtimestamp(time.time()))
     print(action)
