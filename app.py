@@ -35,6 +35,7 @@ ma = Marshmallow(app)
 def db_create():
     base.metadata.create_all(db)
     print('Database created')
+    return 'Database created'
 
 @app.route("/db_create")
 def db_create_all():
@@ -69,6 +70,8 @@ class ActionsSchema(ma.Schema):
 
 answers_schema = AnswersSchema()
 actions_schema = ActionsSchema()
+
+
 
 @app.route("/")
 def hello_world():
