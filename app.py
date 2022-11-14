@@ -115,7 +115,7 @@ def actions():
     print(str(out))
     print(datetime.fromtimestamp(time.time()))
     print(datetime.fromtimestamp(time.time())-last_time[0].date_time)
-
+    d = datetime.fromtimestamp(time.time())-last_time[0].date_time
 
 
 
@@ -123,7 +123,7 @@ def actions():
     print(action)
     session.add(action)
     session.commit()    
-    return jsonify(data=data, message=f'Action {action.id} successfully registered'), 201
+    return jsonify(data=d, message=f'Action {action.id} successfully registered'), 201
 
 
 @app.route("/act",methods=['GET'])
