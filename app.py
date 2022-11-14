@@ -123,7 +123,7 @@ def actions():
     print(action)
     session.add(action)
     session.commit()    
-    return d
+    return str(d)
 
 
 @app.route("/act",methods=['GET'])
