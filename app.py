@@ -40,6 +40,7 @@ def db_create():
 @app.route("/db_create")
 def db_create_all():
     base.metadata.create_all(db)
+    return 'Database created'
 
 
 class Answers(base):
