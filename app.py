@@ -109,7 +109,7 @@ def actions():
 
 
 @app.route("/act",methods=['GET'])
-def actions():
+def act():
     if request.method == "GET":
         if request.args.get('user') == None:
             user = ''
