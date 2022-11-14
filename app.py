@@ -102,7 +102,8 @@ def actions():
             user = ''
         else:
             user = request.args.get('user')
-    last_time = session.query(Actions).filter_by(user=user).order_by(Actions.id).all()
+    # last_time = session.query(Actions).filter_by(user=user).all()
+    last_time = session.query(Actions).all()
     data = actions_schema.dump(last_time)
     out = last_time[len(last_time)-1].date_time
     print(str(out))
