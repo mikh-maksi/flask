@@ -123,7 +123,7 @@ def actions():
     print(action)
     session.add(action)
     session.commit()    
-    return jsonify(data=d, message=f'Action {action.id} successfully registered'), 201
+    return d
 
 
 @app.route("/act",methods=['GET'])
