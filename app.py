@@ -115,7 +115,7 @@ def actions():
     print(str(out))
     print(datetime.fromtimestamp(time.time()))
     print(datetime.fromtimestamp(time.time())-last_time[0].date_time)
-    d = datetime.fromtimestamp(time.time())-last_time[0].date_time
+    d = datetime.fromtimestamp(time.time())-last_time[n].date_time
 
 
 
