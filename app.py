@@ -105,11 +105,18 @@ def actions():
     # last_time = session.query(Actions).filter_by(user=user).all()
     last_time = session.query(Actions).all()
     data = actions_schema.dump(last_time)
+    n = len(last_time)-1
     print(len(last_time))
     out = last_time[0].user
     print(str(out))
-    out = last_time[0].date_time
+    time1 = last_time[0].date_time
     print(str(out))
+    out = last_time[n].date_time
+    print(str(out))
+    print(datetime.fromtimestamp(time.time()))
+
+
+
 
     action = Actions( user=user,date_time=datetime.fromtimestamp(time.time()))
     print(action)
