@@ -135,9 +135,11 @@ def actions_list():
             user = request.args.get('user')
 
     actions_list = session.query(Actions).filter_by(user=user)
+    data = actions_schema.dump(actions_list)
+    
     print(actions_list)
   
-    return jsonify(data=actions_list), 201
+    return jsonify(data=data), 201
 
 @app.route("/actions",methods=['GET'])
 def act():
