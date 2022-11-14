@@ -103,6 +103,7 @@ def actions():
         else:
             user = request.args.get('user')
     last_time = session.query(Actions).filter_by(user=user).order_by(Actions.id).all()
+    data = actions_schema.dump(last_time)
     out = last_time[len(last_time)-1].date_time
     print(str(out))
 
@@ -110,7 +111,7 @@ def actions():
     print(action)
     session.add(action)
     session.commit()    
-    return "<p>User</p>"
+    return jsonify(data=data, message=f'Action {action.id} successfully registered'), 201
 
 
 @app.route("/act",methods=['GET'])
