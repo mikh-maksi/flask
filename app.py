@@ -136,8 +136,10 @@ def actions_list():
 
     actions_list = session.query(Actions).filter_by(user=user).all()
     data = actions_schema.dump(actions_list)
-    
+    for act in actions_list:
+        print(f"{act.id} {act.user} {act.date_time} ")
     print(actions_list)
+    print(data)
   
     return jsonify(data=data), 201
 
