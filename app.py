@@ -145,7 +145,7 @@ def actions_list():
     print(actions_list)
     print(data)
   
-    return jsonify(data=data), 202
+    return jsonify(data=a_lst), 202
 
 @app.route("/actions",methods=['GET'])
 def act():
