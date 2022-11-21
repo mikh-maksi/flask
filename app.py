@@ -136,12 +136,16 @@ def actions_list():
 
     actions_list = session.query(Actions).filter_by(user=user).all()
     data = actions_schema.dump(actions_list)
+    a_lst = []
     for act in actions_list:
+        el = {id:act.id,user:act.user,datetime:act.date_time}
+        a_lst.append(el)
         print(f"{act.id} {act.user} {act.date_time} ")
+    print(a_lst)
     print(actions_list)
     print(data)
   
-    return jsonify(data=data), 201
+    return jsonify(data=data), 202
 
 @app.route("/actions",methods=['GET'])
 def act():
